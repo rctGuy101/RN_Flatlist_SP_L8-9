@@ -20,11 +20,13 @@ const defaultStyles = StyleSheet.create({
   text: {
     fontSize: 16,
     color: colors.text.dark,
+    fontFamily: "tahoma",
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     color: colors.text.light,
+    fontFamily: "tahoma",
   },
   button: {
     backgroundColor: colors.primary,
@@ -36,6 +38,7 @@ const defaultStyles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     color: colors.text.light,
+    fontFamily: "tahoma",
   },
 });
 
