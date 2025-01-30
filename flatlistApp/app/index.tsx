@@ -7,16 +7,39 @@ import {
 } from "react-native";
 import colors from "../styles/colors";
 import defaultStyles from "../styles/defaultStyles";
+import { useState } from "react";
+import ListItemSeparator from "@/components/ListItemSeparator";
+import ListItem from "@/components/ListItem";
+import { DATA } from "@/data/appData";
+import { dataType } from "@/data/appData";
 
 export default function Index() {
+  const [selectedId, setSelectedId] = useState<string>("");
+
+  const handleRowPress = (item: dataType) => {
+    console.log("Selected " + item.title);
+    setSelectedId(item.id);
+  };
   return (
     <View style={defaultStyles.container}>
       <View style={defaultStyles.titleContainer}>
-        <Text style={defaultStyles.title}>Insert Title Here</Text>
+        <Text style={defaultStyles.title}>List Test</Text>
       </View>
       <View style={[defaultStyles.textContainer, { flex: 1 }]}>
         <View style={styles.flatlist}>
-          <Text style={defaultStyles.text}>List will go here.</Text>
+          <FlatList
+            data={DATA}
+            keyExtractor={(item: dataType) => item.id}
+            extraData={selectedId}
+            ItemSeparatorComponent={() => <ListItemSeparator />}
+            renderItem={({ item }) => (
+              <ListItem
+                item={item}
+                isSelected={item.id === selectedId}
+                onPress={handleRowPress}
+              />
+            )}
+          />
         </View>
       </View>
     </View>
@@ -26,15 +49,5 @@ export default function Index() {
 const styles = StyleSheet.create({
   flatlist: {
     alignItems: "center",
-  },
-  titleContainer: {
-    marginTop: 5,
-    width: 300,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-  },
-  titleText: {
-    fontSize: 24,
-    padding: 10,
   },
 });

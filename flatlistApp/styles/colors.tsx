@@ -8,7 +8,7 @@ const colors = {
   success: "#63BB9A", // Success messages
   background: "#ecf0f1", // Background color
   text: {
-    light: "#ffffff", // Text on dark backgrounds
+    light: "#8E9A9D", // Text on dark backgrounds
     dark: "#34495e", // Text on light backgrounds
   },
   theme: {
